@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Time Tracker</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="chart.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Website Time Tracker</h1>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="today">Today</button>
+        <button class="tab-btn" data-tab="daily">Daily</button>
+        <button class="tab-btn" data-tab="alltime">All Time</button>
+      </div>
+    </header>
+
+    <main>
+      <!-- Today's stats tab -->
+      <section id="today" class="tab-content active">
+        <div class="summary-card">
+          <h2>Today's Overview</h2>
+          <div class="summary-stats">
+            <div class="stat">
+              <span class="stat-value" id="today-total-time">0m</span>
+              <span class="stat-label">Total Time</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="today-sites-count">0</span>
+              <span class="stat-label">Sites Visited</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="today-top-site">-</span>
+              <span class="stat-label">Top Site</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="chart-container">
+          <canvas id="today-chart"></canvas>
+        </div>
+        
+        <div class="site-list-container">
+          <h3>Sites Visited Today</h3>
+          <div id="today-sites" class="site-list"></div>
+        </div>
+      </section>
+
+      <!-- Daily averages tab -->
+      <section id="daily" class="tab-content">
+        <div class="summary-card">
+          <h2>Daily Averages</h2>
+          <div class="summary-stats">
+            <div class="stat">
+              <span class="stat-value" id="daily-avg-time">0m</span>
+              <span class="stat-label">Avg. Daily</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="daily-avg-sites">0</span>
+              <span class="stat-label">Avg. Sites</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="daily-most-active">-</span>
+              <span class="stat-label">Most Active</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="chart-container">
+          <canvas id="daily-chart"></canvas>
+        </div>
+        
+        <div class="site-list-container">
+          <h3>Top Sites (Last 7 Days)</h3>
+          <div id="weekly-top-sites" class="site-list"></div>
+        </div>
+      </section>
+
+      <!-- All-time stats tab -->
+      <section id="alltime" class="tab-content">
+        <div class="summary-card">
+          <h2>All-Time Stats</h2>
+          <div class="summary-stats">
+            <div class="stat">
+              <span class="stat-value" id="alltime-total-time">0m</span>
+              <span class="stat-label">Total Time</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="alltime-sites-count">0</span>
+              <span class="stat-label">Sites Visited</span>
+            </div>
+            <div class="stat">
+              <span class="stat-value" id="tracking-since">-</span>
+              <span class="stat-label">Tracking Since</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="chart-container">
+          <canvas id="alltime-chart"></canvas>
+        </div>
+        
+        <div class="site-list-container">
+          <h3>Top Sites (All Time)</h3>
+          <div id="alltime-top-sites" class="site-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="actions">
+        <button id="export-btn" class="action-btn">Export Data</button>
+        <button id="reset-btn" class="action-btn danger">Reset Data</button>
+      </div>
+      <div class="status" id="status-message"></div>
+    </footer>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html> 
